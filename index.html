@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="inputFile">
+    <button type="button" id="btn">Upload</button>
+    <br>
+    <br>
+    <textarea id="txtarea" style="width: 500px;height: 400px;" placeholder="Text will appear here.."></textarea>
+    <script>
+        let inputFile=document.getElementById("inputFile");
+        let button=document.getElementById("btn");
+        let txtarea=document.getElementById("txtarea");
+
+        button.addEventListener("click",()=>{
+            const formData=new FormData();
+            formData.append("pdfFile",inputFile.files[0]);
+            fetch("/extract-text",{
+                method:"post",
+                body:formData
+            }).then(response=>{
+                return response.text()
+            }).then(extractedText=>{
+                txtarea.value=extractedText;
+            })
+        })
+    </script>
+</body>
+</html>
