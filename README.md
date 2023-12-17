@@ -36,6 +36,7 @@ Tesseract Language Settings:
 The Tesseract OCR engine is configured to recognize text in multiple languages. You can customize the language settings in the server code.
 javascript
 Copy code
+
 Tesseract.recognize(
     pdfBuffer, // Buffer of the PDF file
     ['eng', 'deu'], // Language codes for OCR
@@ -43,4 +44,5 @@ Tesseract.recognize(
 ).then(({ data: { text } }) => {
     res.json({ text });
 });
+
 Feel free to customize and enhance the project to suit your specific requirements. Contributions and feedback are welcome!
